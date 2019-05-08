@@ -1,0 +1,54 @@
+2019-05-08 14:44:12 - INFO - 6 - Saving results to: ../results/gnmt_wmt16
+2019-05-08 14:44:12 - INFO - 6 - Run arguments: Namespace(batch_size=64, beam_size=5, bucketing=True, cov_penalty_factor=0.1, cuda=True, cudnn=True, cupti=False, dataset_dir='/mnt/dataset/wmt_ende/', disable_eval=False, dist_url='env://', epochs=8, eval_batch_size=32, gpu_rank=2, grad_clip=5.0, keep_checkpoints=0, len_norm_const=5.0, len_norm_factor=0.6, math='fp32', max_length_train=50, max_length_val=150, max_size=None, min_length_train=0, min_length_val=0, model_config="{'hidden_size': 1024,'num_layers': 4,                         'dropout': 0.2, 'share_embedding': True}", num_minibatches=20, optimization_config="{'optimizer': 'Adam', 'lr': 5e-4}", print_freq=10, profile=False, profile_dir='./profile', rank=6, results_dir='../results', resume=None, save='gnmt_wmt16', save_all=False, save_freq=5000, seed=1, smoothing=0.1, start_epoch=0, target_bleu=21.8, workers=0, world_size=8)
+2019-05-08 14:44:12 - INFO - 6 - building vocabulary from /mnt/dataset/wmt_ende/vocab.bpe.32000
+2019-05-08 14:44:12 - INFO - 6 - size of vocabulary: 36549
+2019-05-08 14:44:12 - INFO - 6 - processing data from /mnt/dataset/wmt_ende/train.tok.clean.bpe.32000.en
+2019-05-08 14:45:08 - INFO - 6 - processing data from /mnt/dataset/wmt_ende/train.tok.clean.bpe.32000.de
+2019-05-08 14:46:06 - INFO - 6 - filtering data, min len: 0, max len: 50
+2019-05-08 14:46:20 - INFO - 6 - pairs before: 4500966, after: 3791658
+2019-05-08 14:46:31 - INFO - 6 - processing data from /mnt/dataset/wmt_ende/newstest_dev.tok.clean.bpe.32000.en
+2019-05-08 14:46:31 - INFO - 6 - processing data from /mnt/dataset/wmt_ende/newstest_dev.tok.clean.bpe.32000.de
+2019-05-08 14:46:31 - INFO - 6 - filtering data, min len: 0, max len: 150
+2019-05-08 14:46:31 - INFO - 6 - pairs before: 5164, after: 5164
+2019-05-08 14:46:31 - INFO - 6 - processing data from /mnt/dataset/wmt_ende/newstest2014.tok.bpe.32000.en
+2019-05-08 14:46:31 - INFO - 6 - processing data from /mnt/dataset/wmt_ende/newstest2014.tok.bpe.32000.de
+2019-05-08 14:46:31 - INFO - 6 - filtering data, min len: 0, max len: 150
+2019-05-08 14:46:32 - INFO - 6 - pairs before: 3003, after: 3003
+2019-05-08 14:46:33 - INFO - 6 - GNMT(
+  (encoder): ResidualRecurrentEncoder(
+    (rnn_layers): ModuleList(
+      (0): LSTM(1024, 1024, bidirectional=True)
+      (1): LSTM(2048, 1024)
+      (2): LSTM(1024, 1024)
+      (3): LSTM(1024, 1024)
+    )
+    (dropout): Dropout(p=0.2)
+    (embedder): Embedding(36549, 1024, padding_idx=0)
+  )
+  (decoder): ResidualRecurrentDecoder(
+    (att_rnn): RecurrentAttention(
+      (rnn): LSTM(1024, 1024)
+      (attn): BahdanauAttention(
+        (linear_q): Linear(in_features=1024, out_features=1024, bias=False)
+        (linear_k): Linear(in_features=1024, out_features=1024, bias=False)
+        (dropout): Dropout(p=0)
+      )
+      (dropout): Dropout(p=0)
+    )
+    (rnn_layers): ModuleList(
+      (0): LSTM(2048, 1024)
+      (1): LSTM(2048, 1024)
+      (2): LSTM(2048, 1024)
+    )
+    (embedder): Embedding(36549, 1024, padding_idx=0)
+    (classifier): Classifier(
+      (classifier): Linear(in_features=1024, out_features=36549, bias=True)
+    )
+    (dropout): Dropout(p=0.2)
+  )
+)
+2019-05-08 14:46:33 - INFO - 6 - building SmoothingLoss (smoothing: 0.1)
+2019-05-08 14:46:33 - INFO - 6 - Training optimizer: {'lr': 0.0005, 'optimizer': 'Adam'}
+2019-05-08 14:46:43 - INFO - 6 - Initializing fp32 optimizer
+2019-05-08 14:46:43 - INFO - 6 - Number of parameters: 169336518
+2019-05-08 14:46:43 - INFO - 6 - Starting epoch 0
